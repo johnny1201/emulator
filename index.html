@@ -1,66 +1,62 @@
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>PS1 Web Player</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    body {
-      font-family: Arial;
-      background: #111;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-    }
-
-    #game {
-      width: 100%;
-      height: 80vh;
-      border: none;
-      margin-top: 10px;
-    }
-  </style>
-
-  <script src="https://cdn.emulatorjs.org/latest/data.js"></script>
-  <script src="https://cdn.emulatorjs.org/latest/emulator.js"></script>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>HM BTN — Web Player (Avançado)</title>
+<link rel="stylesheet" href="style.css"/>
 </head>
-
 <body>
+<header><h1>Harvest Moon BTN — Web Player (Avançado)</h1></header>
+<main>
+  <section class="left">
+    <h2>1 — ROM</h2>
+    <p>Escolha sua ROM .bin (fica apenas no seu dispositivo):</p>
+    <input id="romInput" type="file" accept=".bin"/>
+    <div id="romName" class="info"></div>
 
-  <h2>PS1 Web Player</h2>
-  <p>Selecione sua ROM .BIN:</p>
+    <h2>2 — Memory Cards (.mcr)</h2>
+    <p>Gerencie slots de memory card. Use Google Drive para sincronizar os arquivos entre dispositivos (manual).</p>
+    <div id="mcrSlots"></div>
+    <div style="margin-top:8px">
+      <input id="mcrImport" type="file" accept=".mcr"/>
+      <button id="btnImport">Importar .mcr no slot selecionado</button>
+      <button id="btnExport" disabled>Exportar .mcr do slot selecionado</button>
+      <button id="btnAutoSave">Salvar automático (gera .mcr)</button>
+    </div>
 
-  <input type="file" id="romFile" accept=".bin">
+    <h2>3 — Save States</h2>
+    <p>Crie/load states como arquivos (.state) que podem ser guardados no Drive.</p>
+    <div id="stateSlots"></div>
+    <div style="margin-top:8px">
+      <button id="saveStateBtn">Salvar State</button>
+      <input id="stateName" placeholder="nome do state (ex: dia30-slot1)"/>
+      <input id="stateImport" type="file" accept=".state"/>
+      <button id="loadStateBtn">Carregar State</button>
+    </div>
 
-  <div id="game"></div>
+    <h2>4 — Instruções Rápidas</h2>
+    <ol>
+      <li>Importe sua ROM (.bin).</li>
+      <li>Importe um .mcr do Google Drive para o slot desejado antes de jogar.</li>
+      <li>Ao terminar, exporte o .mcr atualizado e suba ao Drive.</li>
+      <li>Para transferir entre dispositivos, baixe o .mcr do Drive e importe no outro dispositivo.</li>
+    </ol>
 
-  <script>
-    document.getElementById("romFile").addEventListener("change", async function (event) {
-      const file = event.target.files[0];
-      if (!file) return;
+    <p class="legal">Este site <strong>não</strong> envia suas ROMs para servidor. Você é responsável por possuir a ROM.</p>
+  </section>
 
-      const arrayBuffer = await file.arrayBuffer();
-      const blob = new Blob([arrayBuffer]);
-      const romUrl = URL.createObjectURL(blob);
+  <section class="right">
+    <h2>Emulador</h2>
+    <div id="game"></div>
+    <div id="log"></div>
+  </section>
+</main>
 
-      // ========= CONFIGURAÇÃO CORRETA =========
-      EJS_player = "#game";
-      EJS_core = "psx";
-      EJS_gameUrl = romUrl;
+<footer>Screenshot de referência: <code>/mnt/data/f60cb9b5-dd37-4bb1-aaa3-f8ab8c39b228.png</code></footer>
 
-      // ESSENCIAL NO REPLIT
-      EJS_gameID = "mypsxgame";
-
-      // Caminho do EmulatorJS via CDN
-      EJS_pathtodata = "https://cdn.emulatorjs.org/latest/";
-
-      // Iniciar de verdade
-      EJS_start();
-    });
-  </script>
-
+<script src="https://cdn.emulatorjs.org/latest/data.js"></script>
+<script src="https://cdn.emulatorjs.org/latest/emulator.js"></script>
+<script src="app.js"></script>
 </body>
-
 </html>
