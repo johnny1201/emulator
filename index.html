@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Play PS1 - EmulatorJS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="font-family: sans-serif; padding:20px;">
+  <h2>PS1 Web Player</h2>
+  <p>Carregue sua ROM (.bin/.cue/.iso/.zip)</p>
+  <input type="file" id="rom" accept=".bin,.iso,.zip,.cue" />
+
+  <script src="https://cdn.emulatorjs.org/latest/data.js"></script>
+  <script src="https://cdn.emulatorjs.org/latest/emulator.js"></script>
+
+  <script>
+    document.getElementById("rom").addEventListener("change", async (ev) => {
+      const file = ev.target.files[0];
+      if (!file) return;
+
+      const arrayBuf = await file.arrayBuffer();
+      const blob = new Blob([arrayBuf]);
+      const url = URL.createObjectURL(blob);
+
+      EJS_player = "#game";
+      EJS_core = "psx";
+      EJS_gameUrl = url;
+      EJS_pathtodata = "https://cdn.emulatorjs.org/latest/";
+
+      const frame = document.createElement("iframe");
+      frame.id = "game";
+      frame.style = "width:100%; height:80vh; border:none;";
+      document.body.appendChild(frame);
+
+      window.dispatchEvent(new Event("load"));
+    });
+  </script>
+</body>
+</html>
