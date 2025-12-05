@@ -1,59 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Harvest Moon BTN - EmulatorJS </title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            background: #000;
-            height: 100%;
-        }
-        #game {
-            width: 100%;
-            height: 100vh;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Harvest Moon BTN - Web Emulator</title>
+<style>
+    body {
+        margin: 0;
+        background: #000;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    #emulator {
+        width: 100vw;
+        height: 100vh;
+    }
+    #loading {
+        margin-top: 40px;
+        font-size: 22px;
+    }
+</style>
 </head>
+
 <body>
+<h2>Harvest Moon: Back to Nature (Web Emulator)</h2>
+<p>Carregando emulador...</p>
 
-<div id="game"></div>
-
-<script>
-    EJS_player = "#game";
-    EJS_core = "psx";
-    EJS_gameName = "Harvest Moon BTN";
-    EJS_color = "#0064ff";
-    EJS_startOnLoaded = true;
-    EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
-
-    // SUA ROM no GitHub Releases
-    EJS_gameUrl = "https://github.com/johnny1201/emulator/releases/download/v1/Harvest.Moon.-.Back.to.Nature.bin";
-
-    // MAPA DE TECLAS PERSONALIZADO
-    EJS_controls = {
-        "UP": ["ArrowUp", "w"],
-        "DOWN": ["ArrowDown", "s"],
-        "LEFT": ["ArrowLeft", "a"],
-        "RIGHT": ["ArrowRight", "d"],
-
-        "SQUARE": ["j"],
-        "CROSS": ["k"],
-        "CIRCLE": ["l"],
-        "TRIANGLE": ["i"],
-
-        "L1": ["q"],
-        "L2": ["2"],
-        "R1": ["u"],
-        "R2": ["8"],
-
-        "START": ["Enter"],
-        "SELECT": [" "]
-    };
-</script>
-
-<script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+<iframe id="emulator" src="./retroarch.html" frameborder="0" allow="gamepad"></iframe>
 
 </body>
 </html>
