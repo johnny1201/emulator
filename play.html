@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>PS1 Emulator</title>
+<script src="https://cdn.jsdelivr.net/gh/jsr-emu/jsr/dist/jsr.min.js"></script>
+
+<style>
+    html, body {
+        margin: 0;
+        background: black;
+        overflow: hidden;
+    }
+    canvas {
+        width: 100vw !important;
+        height: 100vh !important;
+        image-rendering: pixelated;
+    }
+</style>
+</head>
+
+<body>
+
+<canvas id="screen"></canvas>
+
+<script>
+// ROM da sua URL no GitHub
+const romURL = "https://github.com/johnny1201/emulator/releases/download/v1/Harvest.Moon.-.Back.to.Nature.bin";
+
+async function start() {
+    const rom = await fetch(romURL).then(r => r.arrayBuffer());
+
+    const emulator = await jsr.play({
+        romData: rom,
+        system: "ps1",
+        screen: document.getElementById("screen"),
+        audio: true,
+        suspendOnHide: false
+    });
+
+    // Teclas personalizadas
+    const map = {
+        "ArrowUp": "UP",
+        "ArrowDown": "DOWN",
+        "ArrowLeft": "LEFT",
+        "ArrowRight": "RIGHT",
+
+        "w": "UP",
+        "a": "LEFT",
+        "s": "DOWN",
+        "d": "RIGHT",
+
+        "j": "SQUARE",
+        "k": "CROSS",
+        "l": "CIRCLE",
+        "i": "TRIANGLE",
+
+        "q": "L1",
+        "2": "L2",
+
+        "u": "R1",
+        "8": "R2",
+
+        "Enter": "START",
+        " ": "SELECT"
+    };
+
+    document.addEventListener("keydown", e => {
+        const key = e.key;
+        if (map[key]) {
+            emulator.press(map[key]);
+            e.preventDefault();
+        }
+    });
+
+    document.addEventListener("keyup", e => {
+        const key = e.key;
+        if (map[key]) {
+            emulator.release(map[key]);
+            e.preventDefault();
+        }
+    });
+}
+
+start();
+</script>
+
+</body>
+</html>
