@@ -1,33 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Harvest Moon BTN - Web Emulator</title>
+<meta charset="UTF-8">
+<title>Harvest Moon BTN - PS1 Web</title>
 <style>
     body {
         margin: 0;
-        background: #000;
+        background: black;
         color: white;
-        font-family: Arial, sans-serif;
+        font-family: Arial;
         text-align: center;
     }
-    #emulator {
+    iframe {
+        border: none;
         width: 100vw;
         height: 100vh;
-    }
-    #loading {
-        margin-top: 40px;
-        font-size: 22px;
     }
 </style>
 </head>
 
 <body>
-<h2>Harvest Moon: Back to Nature (Web Emulator)</h2>
-<p>Carregando emulador...</p>
-
-<iframe id="emulator" src="./retroarch.html" frameborder="0" allow="gamepad"></iframe>
+<h2 style="margin:10px 0;">Harvest Moon: Back to Nature</h2>
+<iframe src="./play.html"></iframe>
 
 </body>
 </html>
