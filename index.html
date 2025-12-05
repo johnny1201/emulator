@@ -1,62 +1,59 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>HM BTN — Web Player (Avançado)</title>
-<link rel="stylesheet" href="style.css"/>
+    <meta charset="UTF-8">
+    <title>Harvest Moon BTN - EmulatorJS</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            height: 100%;
+        }
+        #game {
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
 </head>
 <body>
-<header><h1>Harvest Moon BTN — Web Player (Avançado)</h1></header>
-<main>
-  <section class="left">
-    <h2>1 — ROM</h2>
-    <p>Escolha sua ROM .bin (fica apenas no seu dispositivo):</p>
-    <input id="romInput" type="file" accept=".bin"/>
-    <div id="romName" class="info"></div>
 
-    <h2>2 — Memory Cards (.mcr)</h2>
-    <p>Gerencie slots de memory card. Use Google Drive para sincronizar os arquivos entre dispositivos (manual).</p>
-    <div id="mcrSlots"></div>
-    <div style="margin-top:8px">
-      <input id="mcrImport" type="file" accept=".mcr"/>
-      <button id="btnImport">Importar .mcr no slot selecionado</button>
-      <button id="btnExport" disabled>Exportar .mcr do slot selecionado</button>
-      <button id="btnAutoSave">Salvar automático (gera .mcr)</button>
-    </div>
+<div id="game"></div>
 
-    <h2>3 — Save States</h2>
-    <p>Crie/load states como arquivos (.state) que podem ser guardados no Drive.</p>
-    <div id="stateSlots"></div>
-    <div style="margin-top:8px">
-      <button id="saveStateBtn">Salvar State</button>
-      <input id="stateName" placeholder="nome do state (ex: dia30-slot1)"/>
-      <input id="stateImport" type="file" accept=".state"/>
-      <button id="loadStateBtn">Carregar State</button>
-    </div>
+<script>
+    EJS_player = "#game";
+    EJS_core = "psx";
+    EJS_gameName = "Harvest Moon BTN";
+    EJS_color = "#0064ff";
+    EJS_startOnLoaded = true;
+    EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
 
-    <h2>4 — Instruções Rápidas</h2>
-    <ol>
-      <li>Importe sua ROM (.bin).</li>
-      <li>Importe um .mcr do Google Drive para o slot desejado antes de jogar.</li>
-      <li>Ao terminar, exporte o .mcr atualizado e suba ao Drive.</li>
-      <li>Para transferir entre dispositivos, baixe o .mcr do Drive e importe no outro dispositivo.</li>
-    </ol>
+    // SUA ROM no GitHub Releases
+    EJS_gameUrl = "https://github.com/johnny1201/emulator/releases/download/v1/Harvest.Moon.-.Back.to.Nature.bin";
 
-    <p class="legal">Este site <strong>não</strong> envia suas ROMs para servidor. Você é responsável por possuir a ROM.</p>
-  </section>
+    // MAPA DE TECLAS PERSONALIZADO
+    EJS_controls = {
+        "UP": ["ArrowUp", "w"],
+        "DOWN": ["ArrowDown", "s"],
+        "LEFT": ["ArrowLeft", "a"],
+        "RIGHT": ["ArrowRight", "d"],
 
-  <section class="right">
-    <h2>Emulador</h2>
-    <div id="game"></div>
-    <div id="log"></div>
-  </section>
-</main>
+        "SQUARE": ["j"],
+        "CROSS": ["k"],
+        "CIRCLE": ["l"],
+        "TRIANGLE": ["i"],
 
-<footer>Screenshot de referência: <code>/mnt/data/f60cb9b5-dd37-4bb1-aaa3-f8ab8c39b228.png</code></footer>
+        "L1": ["q"],
+        "L2": ["2"],
+        "R1": ["u"],
+        "R2": ["8"],
 
-<script src="https://cdn.emulatorjs.org/latest/data.js"></script>
-<script src="https://cdn.emulatorjs.org/latest/emulator.js"></script>
-<script src="app.js"></script>
+        "START": ["Enter"],
+        "SELECT": [" "]
+    };
+</script>
+
+<script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+
 </body>
 </html>
