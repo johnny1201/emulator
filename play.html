@@ -32,35 +32,29 @@
         // Caminho do EmulatorJS
         EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
 
-        // SUA ROM — Catbox (CORS liberado)
+        // ROM via Catbox (CORS liberado)
         EJS_gameUrl = "https://files.catbox.moe/f3so5d.zip";
 
-        // Mapeamento personalizado das teclas
-        // PSX code map reference:
-        // 0 = UP, 1 = RIGHT, 2 = DOWN, 3 = LEFT,
-        // 4 = TRIANGLE, 5 = CIRCLE, 6 = CROSS, 7 = SQUARE,
-        // 8 = L1, 9 = R1, 10 = L2, 11 = R2,
-        // 12 = SELECT, 13 = START
-
-        window.EJS_playerSettings = {
+        // MAPA DE TECLAS CORRIGIDO
+        EJS_playerSettings = {
             gamepad: {
-                0: ["ArrowUp", "KeyW"],
-                1: ["ArrowRight", "KeyD"],
-                2: ["ArrowDown", "KeyS"],
-                3: ["ArrowLeft", "KeyA"],
+                0: ["ArrowUp", "KeyW"],      // UP
+                1: ["ArrowRight", "KeyD"],   // RIGHT
+                2: ["ArrowDown", "KeyS"],    // DOWN
+                3: ["ArrowLeft", "KeyA"],    // LEFT
 
                 4: ["KeyI"],   // Triângulo
                 5: ["KeyL"],   // Bolinha
                 6: ["KeyK"],   // X
                 7: ["KeyJ"],   // Quadrado
 
-                8: ["KeyQ"],   // L1
-                10: ["Digit2"], // L2
-                9: ["KeyU"],    // R1
-                11: ["Digit8"], // R2
+                8: ["KeyQ"],     // L1
+                10: ["Digit2"],  // L2
+                9: ["KeyU"],     // R1
+                11: ["Digit8"],  // R2
 
-                12: ["Space"], // Select
-                13: ["Enter"]  // Start
+                12: ["Space"],  // Select
+                13: ["Enter"]   // Start
             }
         };
     </script>
